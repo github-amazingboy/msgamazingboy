@@ -1,0 +1,16 @@
+{
+  "name": "msgamazingboycom",
+  "version": "0.0.1",
+  "description": "",
+  "main": "msg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "lowdb": "^1.0.0",
+    "shortid": "^2.2.13"
+  }
+}

@@ -1,0 +1,13 @@
+http://node.amazingboy.cn
+
+
+###
+POST http://msg.amazingboy.cn
+Content-Type: application/json
+
+{
+    "xyz" : 123456
+}
+
+###
+GET http://msg.amazingboy.cn/print HTTP/1.1

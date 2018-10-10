@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Print</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <table width="100%" border="1">
+            <caption>all requests</caption>
+            <tr v-for="(item, index) in requests" :key="index">
+                <td>
+                    <a href="javscript:void(0)" @click="remove(item.id)" title="点击删除">
+                        {{new Date(item['date'])}}
+                    </a>
+                </td>
+                <td>{{item['method']}}</td>
+                <td>{{item['pathname']}}</td>
+                <td>{{item['query']}}</td>
+                <td>{{item['content-type']}}</td>
+                <td>{{item['post']}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            created() {
+                axios.get('/data', {
+
+                })
+                    .then(function (response) {
+                        vm.requests = response.data;
+                    })
+                    .catch(function (error) {
+                    })
+            },
+            data: {
+                requests: []
+            },
+            methods: {
+                remove: function (id) {
+                    axios.delete("/delete", {
+                        params: {
+                            id: id
+                        }
+                    })
+                        .then(function (response) {
+                            vm.requests = vm.requests.filter(
+                                function (item) {
+                                    return item.id != id
+                                }
+                            );
+                        })
+                        .catch(function (error) {
+                        })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

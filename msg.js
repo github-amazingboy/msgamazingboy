@@ -56,7 +56,14 @@ var server = http.createServer(function (req, res) {
         var html = "<table border='1' width='100%'>"+trs.join('')+"</table>";
         res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
         res.end(html);
-    } else {
+    } 
+    else if( newurl.pathname == "/clear") {
+        db.get('req').remove({}).write();
+        var html = "remove completed";
+        res.writeHead(200,{ 'Content-Type': 'text/html;charset=utf-8' })
+        res.end(html)
+    }
+    else {
         //pathname  query
         var data = {
             "id": shortid.generate(),

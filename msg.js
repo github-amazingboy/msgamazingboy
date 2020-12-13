@@ -98,6 +98,6 @@ function insert(data){
     ).write()
 }
 
-server.listen(3001, function () {
-    console.log('server start at 3001 port');
+server.listen(80, function () {
+    console.log('server start at 80 port');
 });
